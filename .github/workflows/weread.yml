@@ -24,7 +24,10 @@ jobs:
       WEEK_DATABASE_NAME: ${{ vars.WEEK_DATABASE_NAME }}
       MONTH_DATABASE_NAME: ${{ vars.MONTH_DATABASE_NAME }}
       DAY_DATABASE_NAME: ${{ vars.DAY_DATABASE_NAME }}
+      WEREAD2NOTION: ${{ vars.WEREAD2NOTION }}
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
@@ -46,7 +49,7 @@ jobs:
         run: |
           weread
       - name: fix sync
-        if: ${{ vars.WEREAD2NOTION != 'true' }}
+      if: ${{ vars.WEREAD2NOTION != 'true' }}
         run: |
           fix
       
