@@ -25,7 +25,12 @@ jobs:
       WEEK_DATABASE_NAME: ${{ vars.WEEK_DATABASE_NAME }}
       MONTH_DATABASE_NAME: ${{ vars.MONTH_DATABASE_NAME }}
       DAY_DATABASE_NAME: ${{ vars.DAY_DATABASE_NAME }}
+      WEREAD2NOTION: ${{ vars.WEREAD2NOTION }}
     steps:
+      - name: check 
+        if: env.WEREAD2NOTION == 'true'
+        run: |
+          exit 0
       - name: Checkout
         uses: actions/checkout@v4
       - name: Set up Python
